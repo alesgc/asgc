@@ -1,0 +1,83 @@
+:root{
+   font-family: url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300;800&display=swap');;
+   --Gothic-A1: font-family: 'Gothic A1';
+ }
+
+ * {
+   margin: 0px;
+   padding: 0px;
+   box-sizing: border-box;
+   /*font-family: var(--Gothic-A1);*/
+ }
+ 
+ body {
+   margin: 50px;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+ }
+ 
+ p {
+   text-decoration: none;
+   font-size: 1.2em;
+ }
+ 
+ a {
+   text-decoration: none;
+ }
+ 
+ section {
+   display: grid;
+   place-items: center;
+   align-items: center;
+   min-height: 100vh;
+ }
+ 
+ h1,h2 {
+   font-size: 2.3em;
+ }
+ 
+ .subtittlecustom {
+   font-size: 1.6em;
+ }
+ 
+ .hidden {
+   opacity: 0;
+   filter: blur(6px);
+   transform: translateX(-100%);
+   transition: all 1.5s;
+ }
+ 
+ .show {
+   opacity: 1;
+   filter: blur(0px);
+   transform: translateX(0%);
+   transition: all 1.5s;
+ }
+
+.asociali {
+   display: flex;
+   gap: 20px;
+}
+
+.avatar {
+   height: 100px;
+   background-color: #fff;
+   border-radius: 10px;
+   margin: 5px;
+}
+
+.asociali :nth-child(2) {
+   transition-delay: 100ms;
+  }
+
+.asociali :nth-child(2) {
+ transition-delay: 400ms;
+}
+
+.asociali :nth-child(3) {
+   transition-delay: 700ms;
+}
+
+.asociali :nth-child(4) {
+   transition-delay: 1s;
+}
