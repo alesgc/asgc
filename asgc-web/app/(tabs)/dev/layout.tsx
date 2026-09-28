@@ -2,7 +2,8 @@ import Link from "next/link";
 import { ReactNode } from "react";
 
 export default function DevLayout({ children }: { children: ReactNode }) {
-  const navItems = [
+  const devNavItems = [
+    { label: "Início DEV", href: "/dev" },
     { label: "Botões & Badges", href: "/dev/buttons" },
     { label: "Inputs", href: "/dev/inputs" },
     { label: "Cards", href: "/dev/cards" },
@@ -11,17 +12,19 @@ export default function DevLayout({ children }: { children: ReactNode }) {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground p-6 max-w-7xl mx-auto space-y-6">
+    <div className="space-y-6">
       <header className="border-b border-border pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight">Ambiente DEV</h1>
+          <Link href="/dev" className="hover:opacity-80 transition-opacity">
+            <h1 className="text-2xl font-bold tracking-tight">Ambiente DEV</h1>
+          </Link>
           <p className="text-sm text-text-secondary">
             Playground e documentação interna de componentes.
           </p>
         </div>
 
         <nav className="flex flex-wrap gap-2">
-          {navItems.map((item) => (
+          {devNavItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
