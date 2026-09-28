@@ -2,6 +2,7 @@ import { ButtonHTMLAttributes, forwardRef, ReactNode } from "react";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "danger" | "ghost";
+  size?: "sm" | "md" | "lg";
   isLoading?: boolean;
   children: ReactNode;
 }
