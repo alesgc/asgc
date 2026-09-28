@@ -16,7 +16,7 @@ export function TableContainer({
   );
 }
 
-export function Table({
+function TableRoot({
   className = "",
   children,
   ...props
@@ -87,3 +87,13 @@ export function TableCell({
     </td>
   );
 }
+
+// Anexa os subcomponentes para suportar o acesso <Table.Header />, <Table.Row />, etc.
+export const Table = Object.assign(TableRoot, {
+  Header: TableHeader,
+  Body: TableBody,
+  Row: TableRow,
+  Head: TableHead,
+  Cell: TableCell,
+  Container: TableContainer,
+});
