@@ -14,13 +14,13 @@ export function ReferencesSection() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {siteConfig.references.map((item) => (
+        {siteConfig.references.map((item, index) => (
           <a
             key={item.id}
             href={item.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="group block h-full focus:outline-none"
+            className={`group block h-full focus:outline-none animate-fade-in delay-${(index % 4) + 1}`}
           >
             <Card className="h-full transition-all duration-200 border-border group-hover:border-accent/40 group-hover:bg-surface/80">
               <CardHeader className="space-y-2">
