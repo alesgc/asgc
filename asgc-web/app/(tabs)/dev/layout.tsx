@@ -6,6 +6,7 @@ export default function DevLayout({ children }: { children: ReactNode }) {
     { label: "Início DEV", href: "/dev" },
     { label: "Botões & Badges", href: "/dev/buttons" },
     { label: "Inputs", href: "/dev/inputs" },
+    { label: "Formulários", href: "/dev/forms" },
     { label: "Cards", href: "/dev/cards" },
     { label: "Tabelas", href: "/dev/tables" },
     { label: "Organismos", href: "/dev/organisms" },
