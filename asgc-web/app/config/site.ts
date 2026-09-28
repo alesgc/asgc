@@ -15,7 +15,7 @@ export interface NavItem {
 export const siteConfig = {
   name: "ASGC Devolp",
   description: "Portfólio e Hub de Desenvolvimento Sistemas ASGC",
-  version: "0.3.0",
+  version: "0.3.2",
   environment: process.env.NEXT_PUBLIC_APP_ENV || "development",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   author: {
@@ -27,7 +27,7 @@ export const siteConfig = {
     { label: "Sobre", href: "/#sobre" },
     { label: "Projetos", href: "/#projetos" },
     { label: "Referências", href: "/#referencias" },
-    { label: "Contato", href: "/#contato" },
+    { label: "Contato", href: "/contact" },
   ] as NavItem[],
   links: {
     github: "https://github.com/alesgc",
