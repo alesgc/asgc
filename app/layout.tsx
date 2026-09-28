@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Gothic_A1, Inter } from "next/font/google";
 import { siteConfig } from "@/app/config/site";
+import { Navbar } from "@/app/components/ui/Navbar";
+import { Footer } from "@/app/components/ui/Footer";
 import "./globals.css";
 
 const inter = Inter({
@@ -29,8 +31,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${gothic.variable} dark`}>
-      <body className="min-h-screen bg-background text-foreground font-sans antialiased selection:bg-accent selection:text-white">
-        {children}
+      <body className="min-h-screen bg-background text-foreground font-sans antialiased flex flex-col">
+        <Navbar />
+        <main className="flex-1 max-w-5xl w-full mx-auto px-4 py-8">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
