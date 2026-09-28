@@ -1,11 +1,12 @@
 import { navItems } from "./navigation";
 import { socials } from "./socials";
 import { references } from "./references";
+import { projects } from "./projects";
 
 export const siteConfig = {
   name: "ASGC Devolp",
   description: "Desenvolvimento de Sistemas, Análise de Dados e Otimização de Processos do Negócio.",
-  version: "0.4.1",
+  version: "0.4.2",
   environment: process.env.NEXT_PUBLIC_APP_ENV || "development",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   author: {
@@ -24,6 +25,7 @@ export const siteConfig = {
   navItems,
   socials,
   references,
+  projects,
 };
 
 export type SiteConfig = typeof siteConfig;
