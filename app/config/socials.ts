@@ -11,7 +11,7 @@ export const socials: SocialItem[] = [
   {
     id: "linkedin",
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/alex-silva-gc/",
+    href: "https://www.linkedin.com/in/techbouros/",
     iconName: "linkedin",
   },
   {
