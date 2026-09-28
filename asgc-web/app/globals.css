@@ -26,6 +26,12 @@
   --font-mono: var(--font-geist-mono), monospace;
 }
 
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 /* Suporte para alternância via tema claro/escuro do sistema */
 @media (prefers-color-scheme: light) {
   :root {
