@@ -14,8 +14,9 @@ export interface NavItem {
 
 export const siteConfig = {
   name: "ASGC Devolp",
-  description: "Portfólio e Hub de Desenvolvimento Sistemas ASGC",
-  version: "0.3.4",
+  description:
+    "Desenvolvimento de Sistemas, Análise de Dados e Otimização de Processos do Negócio.",
+  version: "0.3.5",
   environment: process.env.NEXT_PUBLIC_APP_ENV || "development",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   author: {
@@ -23,6 +24,8 @@ export const siteConfig = {
     email: "asgc.devolp@gmail.com",
     phone: "(11) 969027531",
   },
+  objective:
+    "Profissional em consolidação de carreira na área de Tecnologia e Dados, focado em oportunidades entry-level para Desenvolvimento de Sistemas e Análise de Dados. Combino base técnica sólida em SQL, Python, lógica de programação e bancos de dados à formação complementar em Ciência de Dados e à vivência prática em TI e atendimento ao cliente — estruturando indicadores e organizando informações do negócio para otimizar processos e a tomada de decisão.",
   navItems: [
     { label: "Sobre", href: "/#sobre" },
     { label: "Projetos", href: "/#projetos" },
