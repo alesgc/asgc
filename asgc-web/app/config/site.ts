@@ -5,7 +5,7 @@ import { references } from "./references";
 export const siteConfig = {
   name: "ASGC Devolp",
   description: "Desenvolvimento de Sistemas, Análise de Dados e Otimização de Processos do Negócio.",
-  version: "0.4.0",
+  version: "0.4.1",
   environment: process.env.NEXT_PUBLIC_APP_ENV || "development",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   author: {

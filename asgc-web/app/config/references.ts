@@ -3,15 +3,29 @@ export interface ReferenceItem {
   title: string;
   description: string;
   href: string;
-  category: "Canal" | "Plataforma" | "Comunidade";
+  category: "Canal" | "Plataforma" | "Comunidade" | "Acadêmico";
 }
 
 export const references: ReferenceItem[] = [
   {
+    id: "ebac",
+    title: "EBAC - Escola Britânica de Artes e Tecnologia",
+    description: "Formação em Ciência de Dados, cobrindo Python, análise exploratória, SQL e Machine Learning.",
+    href: "https://ebaconline.com.br/",
+    category: "Acadêmico",
+  },
+  {
+    id: "univesp",
+    title: "UNIVESP - Universidade Virtual do Estado de SP",
+    description: "Graduação em Engenharia de Computação, com foco em fundamentos da computação, matemática e arquitetura de software.",
+    href: "https://univesp.br/",
+    category: "Acadêmico",
+  },
+  {
     id: "guanabara",
     title: "Gustavo Guanabara (Curso em Vídeo)",
     description: "Base essencial em lógica de programação, Python, MySQL e fundamentos Web.",
-    href: "https://www.youtube.com/c/CursoemV%C3%ADdeo",
+    href: "https://www.youtube.com/c/CursoemVideo",
     category: "Canal",
   },
   {
@@ -67,7 +81,7 @@ export const references: ReferenceItem[] = [
     id: "xp-educacao",
     title: "XP Educação",
     description: "Bootcamps e especializações com foco em dados e tecnologia aplicada.",
-    href: "https://xpeducacao.com.br/",
+    href: "https://www.xpeducacao.com.br",
     category: "Plataforma",
   },
 ];
