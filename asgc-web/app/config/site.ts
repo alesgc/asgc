@@ -10,11 +10,11 @@ export interface SocialItem {
 export const siteConfig = {
   name: "ASGC Devolp",
   description: "Portfólio e Hub de Desenvolvimento Sistemas ASGC",
-  version: "0.1.0",
+  version: "0.2.0",
   environment: process.env.NEXT_PUBLIC_APP_ENV || "development",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   author: {
-    name: "Alex Silva",
+    name: "Alexandre Camargo",
     email: "asgc.devolp@gmail.com",
     phone: "(11) 969027531",
   },
