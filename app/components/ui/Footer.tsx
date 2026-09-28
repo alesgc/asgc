@@ -3,9 +3,10 @@ import { Icon } from "@/app/components/ui/Icon";
 
 export function Footer() {
   return (
-    <footer className="w-full border-t border-border bg-surface py-8 mt-16 text-text-secondary">
-      <div className="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <nav aria-label="Links Sociais" className="flex items-center gap-6 text-sm font-medium">
+    <footer className="w-full border-t border-border bg-surface mt-8 text-text-secondary">
+      {/* Seção principal dos links com a altura e respiro originais */}
+      <div className="max-w-5xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <nav aria-label="Links Sociais" className="flex flex-wrap items-center justify-center gap-6 text-sm font-medium">
           {siteConfig.socials.map((link) => (
             <a
               key={link.id}
@@ -19,9 +20,12 @@ export function Footer() {
             </a>
           ))}
         </nav>
+      </div>
 
-        <div className="text-xs text-text-secondary">
-          © {new Date().getFullYear()} {siteConfig.author.name}. Todos os direitos reservados.
+      {/* Faixa inferior de copyright mantida compacta */}
+      <div className="border-t border-border/50 py-2 text-center text-xs text-text-secondary">
+        <div className="max-w-5xl mx-auto px-4">
+          <span>© {new Date().getFullYear()} {siteConfig.author.name}. Todos os direitos reservados.</span>
         </div>
       </div>
     </footer>
