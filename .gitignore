@@ -1,0 +1,14 @@
+# Subpasta do Next.js
+asgc-web/node_modules/
+asgc-web/.next/
+asgc-web/out/
+asgc-web/build/
+asgc-web/dist/
+asgc-web/.env*.local
+asgc-web/.env
+
+# Regras gerais
+node_modules/
+.next/
+*.log
+.DS_Store
