@@ -7,17 +7,28 @@ export interface SocialItem {
   iconName: IconName;
 }
 
+export interface NavItem {
+  label: string;
+  href: string;
+}
+
 export const siteConfig = {
   name: "ASGC Devolp",
   description: "Portfólio e Hub de Desenvolvimento Sistemas ASGC",
-  version: "0.2.0",
+  version: "0.1.0",
   environment: process.env.NEXT_PUBLIC_APP_ENV || "development",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   author: {
-    name: "Alexandre Camargo",
+    name: "Alex Silva",
     email: "asgc.devolp@gmail.com",
     phone: "(11) 969027531",
   },
+  navItems: [
+    { label: "Sobre", href: "/#sobre" },
+    { label: "Projetos", href: "/#projetos" },
+    { label: "Referências", href: "/#referencias" },
+    { label: "Contato", href: "/#contato" },
+  ] as NavItem[],
   links: {
     github: "https://github.com/alesgc",
     linkedin: "https://www.linkedin.com/in/alex-silva-gc/",
