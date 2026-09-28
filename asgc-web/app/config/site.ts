@@ -15,7 +15,7 @@ export interface NavItem {
 export const siteConfig = {
   name: "ASGC Devolp",
   description: "Portfólio e Hub de Desenvolvimento Sistemas ASGC",
-  version: "0.3.2",
+  version: "0.3.3",
   environment: process.env.NEXT_PUBLIC_APP_ENV || "development",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   author: {
