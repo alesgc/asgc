@@ -29,6 +29,13 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Adiciona margem de compensação para o menu fixo ao navegar via âncoras */
+    scroll-margin-top: 5rem;
+  }
+
+  /* Garante o comportamento para todas as seções */
+  section {
+    scroll-margin-top: 5rem;
   }
 }
 
