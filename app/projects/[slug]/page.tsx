@@ -1,3 +1,6 @@
+"use client";
+
+import { use } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { projects } from "@/app/config/projects";
@@ -9,18 +12,11 @@ interface ProjectDetailPageProps {
   }>;
 }
 
-export function generateStaticParams() {
-  return projects.map((project) => ({
-    slug: project.id,
-  }));
-}
-
-export default async function ProjectDetailPage({ params }: ProjectDetailPageProps) {
-  // Aguarda a resolução dos parâmetros dinâmicos (padrão Next.js recente)
-  const resolvedParams = await params;
+export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
+  // Desembrulha a Promise de parâmetros de forma síncrona/reativa usando React.use()
+  const resolvedParams = use(params);
   const project = projects.find((p) => p.id === resolvedParams.slug);
 
-  // Se o projeto não existir, exibe a tela de manutenção/aviso estilizada
   if (!project) {
     return (
       <main className="max-w-4xl mx-auto px-4 py-16">
@@ -34,7 +30,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
   }
 
   return (
-    <main className="max-w-4xl mx-auto px-4 py-12 space-y-8">
+    <main className="max-w-4xl mx-auto px-4 py-12 space-y-10">
       <div>
         <Link href="/projects" className="text-xs text-text-secondary hover:text-accent transition-colors">
           &larr; Voltar para Todos os Projetos
@@ -79,11 +75,14 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
         )}
       </div>
 
-      <section className="space-y-4 pt-4 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground">Documentação & Arquitetura</h2>
+      {/* Seção Estruturada aprimorada para portfólio de dados / engenharia */}
+      <section className="space-y-6 pt-4 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground">Documentação & Arquitetura do Projeto</h2>
+        
         <div className="bg-surface/50 border border-border p-6 rounded-lg text-sm text-text-secondary space-y-4 leading-relaxed">
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-foreground">Contexto & Objetivo:</h3>
           <p>
-            Esta página apresenta os detalhes técnicos estruturados para o projeto <strong>{project.title}</strong>.
+            Desenvolvimento estruturado para o projeto <strong>{project.title}</strong>, contemplando boas práticas de organização de código, modelagem e documentação técnica.
           </p>
 
           <div className="space-y-2 pt-2">
