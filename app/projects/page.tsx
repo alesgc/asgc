@@ -1,52 +1,31 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
-import { projects, projectCategories, ProjectCategory } from "@/app/config/projects";
+import { projects } from "@/app/config/projects";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/app/components/ui/Card";
-import { UnderConstruction } from "@/app/components/ui/UnderConstruction"; // Ajuste o caminho se necessário
+import { UnderConstruction } from "@/app/components/ui/UnderConstruction";
 
-export function ProjectsSection() {
-  const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>("Todos");
+export const metadata = {
+  title: "Projetos | ASGC Devolp",
+  description: "Lista completa de aplicações, scripts e análises de dados desenvolvidas.",
+};
 
-  const filteredProjects =
-    selectedCategory === "Todos"
-      ? projects
-      : projects.filter((project) => project.category === selectedCategory);
-
-  // Limita a exibição na home entre 0 e 4 projetos
-  const previewProjects = filteredProjects.slice(0, 4);
-
+export default function AllProjectsPage() {
   return (
-    <section id="projetos" className="py-12 space-y-6">
-      <div className="space-y-1">
-        <h2 className="text-2xl font-bold tracking-tight text-foreground">Projetos</h2>
-        <p className="text-sm text-text-secondary">
-          Aplicações, scripts de automação, consultas SQL e análises de dados desenvolvidas.
-        </p>
+    <main className="max-w-5xl mx-auto px-4 py-12 space-y-8">
+      <div className="space-y-4 border-b border-border pb-6">
+        <Link href="/" className="text-xs text-text-secondary hover:text-accent transition-colors">
+          &larr; Voltar para a Página Inicial
+        </Link>
+        <div className="space-y-1">
+          <h1 className="text-3xl font-bold tracking-tight text-foreground">Todos os Projetos</h1>
+          <p className="text-sm text-text-secondary">
+            Repositório completo de automações, códigos, bancos de dados estruturados e aplicações web.
+          </p>
+        </div>
       </div>
 
-      {/* Filtros por Categoria (Abas) */}
-      <div className="flex flex-wrap gap-2 pb-2">
-        {projectCategories.map((category) => (
-          <button
-            key={category}
-            onClick={() => setSelectedCategory(category)}
-            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
-              selectedCategory === category
-                ? "bg-accent text-white shadow-sm"
-                : "bg-surface border border-border text-text-secondary hover:text-foreground hover:border-accent/40"
-            }`}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-
-      {/* Renderização Condicional: Se houver projetos, exibe o grid limitados a 4. Senão, exibe UnderConstruction */}
-      {previewProjects.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {previewProjects.map((project) => (
+      {projects.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {projects.map((project) => (
             <Card key={project.id} className="h-full flex flex-col justify-between border-border hover:border-accent/40 transition-colors">
               <div>
                 <CardHeader className="space-y-2">
@@ -85,12 +64,12 @@ export function ProjectsSection() {
                   ))}
                 </div>
 
-                <div className="flex items-center justify-between text-xs font-medium pt-2 border-t border-border/40">
+                <div className="flex items-center justify-between text-xs font-medium pt-3 border-t border-border/40">
                   <Link
                     href={`/projects/${project.id}`}
                     className="text-accent hover:underline font-semibold"
                   >
-                    Ver Documentação
+                    Ver Documentação Completa
                   </Link>
 
                   <div className="flex items-center gap-3">
@@ -121,19 +100,12 @@ export function ProjectsSection() {
           ))}
         </div>
       ) : (
-        <UnderConstruction title="Nenhum projeto encontrado nesta categoria no momento. Estamos atualizando o portfólio!" />
+        <UnderConstruction
+          title="Nenhum Projeto Cadastrado"
+          description="A listagem de projetos está temporariamente indisponível. Retorne em breve!"
+          backHref="/"
+        />
       )}
-
-      {/* Footer Indicativo para a listagem completa */}
-      <div className="flex justify-center pt-6 border-t border-border/40">
-        <Link
-          href="/projects"
-          className="px-6 py-2.5 rounded-lg bg-surface border border-border text-foreground hover:border-accent/50 text-sm font-semibold transition-all shadow-sm flex items-center gap-2 group"
-        >
-          Conhecer lista completa de projetos 
-          <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
-        </Link>
-      </div>
-    </section>
+    </main>
   );
 }
