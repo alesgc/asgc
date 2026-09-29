@@ -10,7 +10,7 @@ export function SkillsSection() {
     },
     {
       title: "Visualização & BI",
-      skills: ["Power BI", "DAX", "Excel Avançado", "Dashboarding"],
+      skills: ["Power BI", "DAX", "Excel Intermediário", "Dashboarding"],
     },
     {
       title: "Engenharia & Ferramentas",

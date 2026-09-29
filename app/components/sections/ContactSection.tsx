@@ -12,6 +12,7 @@ import { Icon, IconName } from "@/app/components/ui/Icon";
 export function ContactSection() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   // Tipagem explicita das redes profissionais para o TypeScript aceitar IconName
   const networkLinks: Array<{
@@ -31,15 +32,44 @@ export function ContactSection() {
     },
   ];
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setSuccess(false);
+    setErrorMessage("");
 
-    setTimeout(() => {
-      setLoading(false);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    const data = {
+      name: formData.get("name"),
+      phone: formData.get("phone"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Ocorreu um erro ao enviar a mensagem.");
+      }
+
       setSuccess(true);
-    }, 1200);
+      form.reset(); // Limpa os campos do formulário após o envio
+    } catch (err: any) {
+      setErrorMessage(err.message || "Erro de conexão. Tente novamente mais tarde.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -154,20 +184,20 @@ export function ContactSection() {
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <FormField label="Nome" htmlFor="contact-name" required>
-                      <Input id="contact-name" placeholder="Seu nome" required />
+                      <Input id="contact-name" name="name" placeholder="Seu nome" required />
                     </FormField>
 
                     <FormField label="Telefone" htmlFor="contact-phone">
-                      <Input id="contact-phone" type="tel" placeholder="(11) 99999-9999" />
+                      <Input id="contact-phone" name="phone" type="tel" placeholder="(11) 99999-9999" />
                     </FormField>
                   </div>
 
                   <FormField label="E-mail" htmlFor="contact-email" required>
-                    <Input id="contact-email" type="email" placeholder="seu.email@exemplo.com" required />
+                    <Input id="contact-email" name="email" type="email" placeholder="seu.email@exemplo.com" required />
                   </FormField>
 
                   <FormField label="Mensagem" htmlFor="contact-message" required>
-                    <TextArea id="contact-message" rows={4} placeholder="Escreva sua mensagem..." required className="resize-none" />
+                    <TextArea id="contact-message" name="message" rows={4} placeholder="Escreva sua mensagem..." required className="resize-none" />
                   </FormField>
                 </div>
 
@@ -176,6 +206,14 @@ export function ContactSection() {
                     <div className="p-3 mb-3 rounded-lg bg-accent/10 border border-accent/20">
                       <p className="text-xs text-accent font-medium text-center">
                         ✓ Mensagem enviada com sucesso! Em breve entrarei em contato.
+                      </p>
+                    </div>
+                  )}
+
+                  {errorMessage && (
+                    <div className="p-3 mb-3 rounded-lg bg-red-500/10 border border-red-500/20">
+                      <p className="text-xs text-red-400 font-medium text-center">
+                        ✕ {errorMessage}
                       </p>
                     </div>
                   )}
