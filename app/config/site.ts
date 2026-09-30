@@ -6,7 +6,7 @@ import { projects } from "./projects";
 export const siteConfig = {
   name: "ASGC Devolp",
   description: "Desenvolvimento de Sistemas, Análise de Dados e Otimização de Processos do Negócio.",
-  version: "0.8.2",
+  version: "0.8.3",
   environment: process.env.NEXT_PUBLIC_APP_ENV || "development",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   author: {
@@ -21,6 +21,7 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/in/alesgc/",
     whatsapp: "https://wa.me/5511969027531",
     cv: "/cv.pdf",
+    favicon: "/favicon.png",
   },
   navItems,
   socials,
