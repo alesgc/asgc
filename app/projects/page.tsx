@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { projects } from "@/app/config/projects";
+import { projects as realProjects, ProjectItem } from "@/app/config/projects";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/app/components/ui/Card";
 import { UnderConstruction } from "@/app/components/ui/UnderConstruction";
 
@@ -8,10 +8,15 @@ export const metadata = {
   description: "Lista completa de aplicações, scripts e análises de dados desenvolvidas.",
 };
 
-export default function AllProjectsPage() {
+interface AllProjectsPageProps {
+  projects?: ProjectItem[];
+}
+
+export default function AllProjectsPage({ projects = realProjects }: AllProjectsPageProps) {
   return (
     <main className="max-w-5xl mx-auto px-4 py-12 space-y-8">
-      <div className="space-y-4 border-b border-border pb-6">
+      {/* Cabeçalho */}
+      <div className="space-y-4 border-b border-border/60 pb-6">
         <Link href="/" className="text-xs text-text-secondary hover:text-accent transition-colors">
           &larr; Voltar para a Página Inicial
         </Link>
@@ -23,10 +28,11 @@ export default function AllProjectsPage() {
         </div>
       </div>
 
+      {/* Renderização Condicional: Estado Com Projetos Reais vs Estado Zerado */}
       {projects.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project) => (
-            <Card key={project.id} className="h-full flex flex-col justify-between border-border hover:border-accent/40 transition-colors">
+            <Card key={project.id} className="h-full flex flex-col justify-between border-border/60 hover:border-accent/40 transition-colors bg-surface/40">
               <div>
                 <CardHeader className="space-y-2">
                   <div className="flex items-center justify-between">
@@ -57,7 +63,7 @@ export default function AllProjectsPage() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-[11px] px-2 py-0.5 rounded bg-surface border border-border/60 text-text-secondary"
+                      className="text-[11px] px-2 py-0.5 rounded bg-background border border-border/60 text-text-secondary"
                     >
                       {tag}
                     </span>
@@ -102,7 +108,7 @@ export default function AllProjectsPage() {
       ) : (
         <UnderConstruction
           title="Nenhum Projeto Cadastrado"
-          description="A listagem de projetos está temporariamente indisponível. Retorne em breve!"
+          description="A listagem de projetos está sendo atualizada com novas automações e casos reais. Retorne em breve!"
           backHref="/"
         />
       )}
