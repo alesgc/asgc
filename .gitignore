@@ -1,14 +1,33 @@
-# Subpasta do Next.js
-asgc-web/node_modules/
-asgc-web/.next/
-asgc-web/out/
-asgc-web/build/
-asgc-web/dist/
-asgc-web/.env*.local
-asgc-web/.env
+# Dependências
+/node_modules
+/.pnpm-store
 
-# Regras gerais
-node_modules/
-.next/
+# Compilação e Builds do Next.js
+/.next/
+/out/
+/build/
+/dist/
+
+# Variáveis de Ambiente e Chaves Privadas (Nunca enviar ao Git)
+.env
+.env*.local
+.env.production.local
+.env.development.local
+
+# Logs e Arquivos de Diagnóstico
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Sistema Operacional e IDEs
 .DS_Store
+*.pem
+.vscode/
+.idea/
+
+# Cache do TypeScript e Vercel
+*.tsbuildinfo
+next-env.d.ts
+/.vercel
