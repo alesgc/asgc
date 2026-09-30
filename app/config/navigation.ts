@@ -3,9 +3,9 @@ export interface NavItem {
   href: string;
 }
 
-export const navItems: NavItem[] = [
-  { label: "Sobre", href: "/#sobre" },
-  { label: "Projetos", href: "/#projetos" },
-  { label: "Referências", href: "/#referencias" },
-  { label: "Contato", href: "/contact" },
+export const navItems = [
+  { id: "sobre", label: "Sobre", href: "#sobre" },
+  { id: "projetos", label: "Projetos", href: "#projetos" },
+  { id: "referencias", label: "Referências", href: "#referencias" },
+  { id: "contato", label: "Contato", href: "#contato" },
 ];

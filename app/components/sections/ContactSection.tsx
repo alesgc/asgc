@@ -14,7 +14,7 @@ export function ContactSection() {
   const [success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  // Tipagem explicita das redes profissionais para o TypeScript aceitar IconName
+  // Tipagem explícita das redes profissionais para o TypeScript aceitar IconName
   const networkLinks: Array<{
     id: string;
     label: string;
@@ -73,8 +73,8 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contato" className="space-y-8">
-      {/* Cabeçalho da Seção */}
+    <section id="contato" className="pt-12 sm:pt-16 border-t border-border/60 space-y-8">
+      {/* Cabeçalho da Seção no Padrão do Design System */}
       <div className="space-y-1">
         <h2 className="text-2xl font-bold tracking-tight text-foreground">Contato</h2>
         <p className="text-sm text-text-secondary">

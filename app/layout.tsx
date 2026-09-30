@@ -27,7 +27,16 @@ export const metadata: Metadata = {
     shortcut: siteConfig.links.favicon,
     apple: siteConfig.links.favicon,
   },
+  openGraph: {
+    title: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    locale: "pt_BR",
+    type: "website",
+  },
 };
+
 export default function RootLayout({
   children,
 }: {

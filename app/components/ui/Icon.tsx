@@ -9,7 +9,10 @@ export type IconName =
   | "arrow-left"
   | "mail"
   | "phone"
-  | "map-pin";
+  | "map-pin"
+  | "user"
+  | "code"
+  | "book-open";
 
 interface IconProps extends SVGProps<SVGSVGElement> {
   name: IconName;
@@ -81,6 +84,34 @@ export function Icon({ name, size = 18, className = "", ...props }: IconProps) {
         <svg {...iconProps}>
           <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
           <circle cx="12" cy="10" r="3" />
+        </svg>
+      );
+    case "user":
+      return (
+        <svg {...iconProps}>
+          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
+      );
+    case "code":
+      return (
+        <svg {...iconProps}>
+          <polyline points="16 18 22 12 16 6" />
+          <polyline points="8 6 2 12 8 18" />
+        </svg>
+      );
+    case "book-open":
+      return (
+        <svg {...iconProps}>
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+        </svg>
+      );
+    case "arrow-left":
+      return (
+        <svg {...iconProps}>
+          <line x1="19" y1="12" x2="5" y2="12" />
+          <polyline points="12 19 5 12 12 5" />
         </svg>
       );
     case "spinner":
