@@ -28,11 +28,21 @@ export default function AllProjectsPage({ projects = realProjects }: AllProjects
         </div>
       </div>
 
-      {/* Renderização Condicional: Estado Com Projetos Reais vs Estado Zerado */}
-      {projects.length > 0 ? (
+      {/* Regra de Renderização Dinâmica */}
+      {projects.length === 0 ? (
+        <UnderConstruction
+          title="Nenhum Projeto Cadastrado"
+          description="A listagem de projetos está sendo atualizada com novas automações e casos reais. Retorne em breve!"
+          backHref="/"
+        />
+      ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Mapeamento dos Projetos Reais */}
           {projects.map((project) => (
-            <Card key={project.id} className="h-full flex flex-col justify-between border-border/60 hover:border-accent/40 transition-colors bg-surface/40">
+            <Card
+              key={project.id}
+              className="h-full flex flex-col justify-between border-border/60 hover:border-accent/40 transition-colors bg-surface/40"
+            >
               <div>
                 <CardHeader className="space-y-2">
                   <div className="flex items-center justify-between">
@@ -45,7 +55,7 @@ export default function AllProjectsPage({ projects = realProjects }: AllProjects
                       </span>
                     )}
                   </div>
-                  
+
                   <Link href={`/projects/${project.id}`} className="block group">
                     <CardTitle className="text-lg group-hover:text-accent transition-colors">
                       {project.title} &rarr;
@@ -104,13 +114,34 @@ export default function AllProjectsPage({ projects = realProjects }: AllProjects
               </CardContent>
             </Card>
           ))}
+
+          {/* Card Exclusivo de "Em Construção" quando houver exatamente 1 projeto */}
+          {projects.length === 1 && (
+            <Card className="h-full flex flex-col justify-between border-dashed border-border/60 bg-surface/20 opacity-85 hover:opacity-100 transition-opacity">
+              <CardHeader className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-surface border border-border text-text-secondary">
+                    Em Breve
+                  </span>
+                </div>
+                <CardTitle className="text-lg text-text-secondary">
+                  Novas Automações & Cases
+                </CardTitle>
+                <CardDescription className="text-xs text-text-secondary leading-relaxed">
+                  Trabalhos adicionais em engenharia de dados, consultas SQL e automações com Python estão sendo documentados para disponibilização.
+                </CardDescription>
+              </CardHeader>
+
+              <CardContent className="pt-2">
+                <div className="p-3 rounded-lg bg-background/50 border border-border/40 text-center">
+                  <p className="text-xs text-text-secondary font-medium">
+                    ⚡ Próximo projeto em fase de estruturação
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          )}
         </div>
-      ) : (
-        <UnderConstruction
-          title="Nenhum Projeto Cadastrado"
-          description="A listagem de projetos está sendo atualizada com novas automações e casos reais. Retorne em breve!"
-          backHref="/"
-        />
       )}
     </main>
   );

@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { projects, projectCategories, ProjectCategory } from "@/app/config/projects";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/app/components/ui/Card";
-import { UnderConstruction } from "@/app/components/ui/UnderConstruction"; // Ajuste o caminho se necessário
+import { UnderConstruction } from "@/app/components/ui/UnderConstruction";
 
 export function ProjectsSection() {
   const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>("Todos");
@@ -14,7 +14,7 @@ export function ProjectsSection() {
       ? projects
       : projects.filter((project) => project.category === selectedCategory);
 
-  // Limita a exibição na home entre 0 e 4 projetos
+  // Limita a exibição na home em até 4 projetos
   const previewProjects = filteredProjects.slice(0, 4);
 
   return (
@@ -43,11 +43,14 @@ export function ProjectsSection() {
         ))}
       </div>
 
-      {/* Renderização Condicional: Se houver projetos, exibe o grid limitados a 4. Senão, exibe UnderConstruction */}
-      {previewProjects.length > 0 ? (
+      {/* Renderização Condicional baseada na regra de quantidade */}
+      {previewProjects.length === 0 ? (
+        <UnderConstruction title="Nenhum projeto encontrado nesta categoria no momento. Estamos atualizando o portfólio!" />
+      ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Mapeamento dos Projetos Reais */}
           {previewProjects.map((project) => (
-            <Card key={project.id} className="h-full flex flex-col justify-between border-border hover:border-accent/40 transition-colors">
+            <Card key={project.id} className="h-full flex flex-col justify-between border-border/60 hover:border-accent/40 transition-colors bg-surface/40">
               <div>
                 <CardHeader className="space-y-2">
                   <div className="flex items-center justify-between">
@@ -78,7 +81,7 @@ export function ProjectsSection() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-[11px] px-2 py-0.5 rounded bg-surface border border-border/60 text-text-secondary"
+                      className="text-[11px] px-2 py-0.5 rounded bg-background border border-border/60 text-text-secondary"
                     >
                       {tag}
                     </span>
@@ -119,9 +122,34 @@ export function ProjectsSection() {
               </CardContent>
             </Card>
           ))}
+
+          {/* Card Exclusivo de "Em Construção" quando houver exatamente 1 projeto filtrado */}
+          {previewProjects.length === 1 && (
+            <Card className="h-full flex flex-col justify-between border-dashed border-border/60 bg-surface/20 opacity-85 hover:opacity-100 transition-opacity">
+              <CardHeader className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-surface border border-border text-text-secondary">
+                    Em Breve
+                  </span>
+                </div>
+                <CardTitle className="text-lg text-text-secondary">
+                  Novas Automações & Cases
+                </CardTitle>
+                <CardDescription className="text-xs text-text-secondary leading-relaxed">
+                  Trabalhos adicionais em engenharia de dados, consultas SQL e automações com Python estão sendo documentados para disponibilização.
+                </CardDescription>
+              </CardHeader>
+
+              <CardContent className="pt-2">
+                <div className="p-3 rounded-lg bg-background/50 border border-border/40 text-center">
+                  <p className="text-xs text-text-secondary font-medium">
+                    ⚡ Próximo projeto em fase de estruturação
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          )}
         </div>
-      ) : (
-        <UnderConstruction title="Nenhum projeto encontrado nesta categoria no momento. Estamos atualizando o portfólio!" />
       )}
 
       {/* Footer Indicativo para a listagem completa */}
