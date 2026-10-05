@@ -22,13 +22,47 @@ export interface ProjectItem {
 
 export const projectCategories: ProjectCategory[] = [
   "Todos",
-  "SQL",
-  "Python",
-  "Web",
   "DataScience",
+  "Python",
+  "SQL",
+  "Web",
 ];
 
 export const projects: ProjectItem[] = [
+  {
+    id: "pera",
+    title: "Ecossistema Financeiro Pera",
+    description:
+      "Plataforma analítica e gerenciador financeiro voltado para consolidação de indicadores, conversão de moedas (USD PTAX) e análise de transações financeiras corporativas e pessoais.",
+    category: "DataScience",
+    tags: [
+      "FastAPI",
+      "Python",
+      "PostgreSQL",
+      "Next.js",
+      "Power BI",
+      "Alembic",
+    ],
+    githubUrl: "https://github.com/alesgc/pera",
+    highlight: true,
+    docsSlug: "pera-finance-overview",
+    details: {
+      motivation:
+        "Oferecer uma solução integrada para tratamento de dados financeiros complexos, automatizando a coleta de cotações PTAX do Banco Central e estruturando esquemas relacionais para suporte à decisão.",
+      solution:
+        "Arquitetura backend em Python com FastAPI e ORM SQLAlchemy, migrações versionadas com Alembic, banco relacional PostgreSQL e dashboards analíticos alimentados por pipelines de dados ETL.",
+      techStack: [
+        "Python 3.12",
+        "FastAPI",
+        "PostgreSQL",
+        "SQLAlchemy / Alembic",
+        "Next.js / React",
+        "Power BI",
+      ],
+      impact:
+        "Redução no tempo de conciliação financeira em múltiplos ativos, modelagem DDL otimizada e automação da ingestão de taxas de câmbio.",
+    },
+  },
   {
     id: "asgc",
     title: "Portfólio & Hub ASGC Devolp",
@@ -63,40 +97,6 @@ export const projects: ProjectItem[] = [
       ],
       impact:
         "Pontuação de 98+ no Google Lighthouse, tempo de carregamento inferior a 1.2s, conformidade com práticas de SEO/OpenGraph e navegação otimizada com 100% de acessibilidade mobile.",
-    },
-  },
-  {
-    id: "pera",
-    title: "Ecossistema Financeiro Pera",
-    description:
-      "Plataforma analítica e gerenciador financeiro voltado para consolidação de indicadores, conversão de moedas (USD PTAX) e análise de transações financeiras corporativas e pessoais.",
-    category: "DataScience",
-    tags: [
-      "FastAPI",
-      "Python",
-      "PostgreSQL",
-      "Next.js",
-      "Power BI",
-      "Alembic",
-    ],
-    githubUrl: "https://github.com/alesgc/pera",
-    highlight: true,
-    docsSlug: "pera-finance-overview",
-    details: {
-      motivation:
-        "Oferecer uma solução integrada para tratamento de dados financeiros complexos, automatizando a coleta de cotações PTAX do Banco Central e estruturando esquemas relacionais para suporte à decisão.",
-      solution:
-        "Arquitetura backend em Python com FastAPI e ORM SQLAlchemy, migrações versionadas com Alembic, banco relacional PostgreSQL e dashboards analíticos alimentados por pipelines de dados ETL.",
-      techStack: [
-        "Python 3.12",
-        "FastAPI",
-        "PostgreSQL",
-        "SQLAlchemy / Alembic",
-        "Next.js / React",
-        "Power BI",
-      ],
-      impact:
-        "Redução no tempo de conciliação financeira em múltiplos ativos, modelagem DDL otimizada e automação da ingestão de taxas de câmbio.",
     },
   },
 ];

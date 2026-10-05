@@ -115,8 +115,9 @@ export default function AllProjectsPage({ projects = realProjects }: AllProjects
             </Card>
           ))}
 
-          {/* Card Exclusivo de "Em Construção" quando houver exatamente 1 projeto */}
-          {projects.length === 1 && (
+          {/* Placeholder "Em Breve" desabilitado por auditoria de R&S em 2026-10-05.
+              Regra: só exibir projetos finalizados. Reativar quando houver 4+ reais. */}
+          {false && projects.length === 1 && (
             <Card className="h-full flex flex-col justify-between border-dashed border-border/60 bg-surface/20 opacity-85 hover:opacity-100 transition-opacity">
               <CardHeader className="space-y-2">
                 <div className="flex items-center justify-between">
