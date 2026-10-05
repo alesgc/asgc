@@ -1,28 +1,62 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { projects, projectCategories, ProjectCategory } from "@/app/config/projects";
+import { projectCategories, ProjectCategory } from "@/app/config/projects";
+import { getGitHubProjects } from "@/lib/services/github";
+import { FormattedProject } from "@/types/github";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/app/components/ui/Card";
 import { UnderConstruction } from "@/app/components/ui/UnderConstruction";
 
 export function ProjectsSection() {
   const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>("Todos");
+  const [projectList, setProjectList] = useState<FormattedProject[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  const filteredProjects =
-    selectedCategory === "Todos"
-      ? projects
-      : projects.filter((project) => project.category === selectedCategory);
+  useEffect(() => {
+    async function loadProjects() {
+      try {
+        setLoading(true);
+        const data = await getGitHubProjects();
+        setProjectList(data);
+      } catch (error) {
+        console.error("Erro ao carregar projetos do GitHub:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
 
-  // Limita a exibição na home em até 4 projetos
-  const previewProjects = filteredProjects.slice(0, 4);
+    loadProjects();
+  }, []);
+
+  // Filtra projetos conforme a categoria selecionada
+  const filteredProjects = projectList.filter((project) => {
+    if (selectedCategory === "Todos") return true;
+
+    const lang = project.language?.toLowerCase() || "";
+    const topics = project.topics.map((t) => t.toLowerCase());
+
+    if (selectedCategory === "SQL") return lang.includes("sql") || topics.includes("sql");
+    if (selectedCategory === "Python") return lang.includes("python") || topics.includes("python");
+    if (selectedCategory === "Web") return lang.includes("typescript") || lang.includes("javascript") || topics.includes("web") || topics.includes("nextjs");
+    if (selectedCategory === "DataScience") return topics.includes("datascience") || topics.includes("data-analysis") || lang.includes("jupyter") || project.id === "pera";
+
+    return true;
+  });
+
+  // Limite máximo de exibição de projetos no preview
+  const MAX_DISPLAY = 4;
+  const previewProjects = filteredProjects.slice(0, MAX_DISPLAY);
+
+  // Exibe card "Em Construção" se a lista tiver menos projetos do que o limite do grid
+  const showPlaceholderCard = previewProjects.length > 0 && previewProjects.length < MAX_DISPLAY;
 
   return (
     <section id="projetos" className="py-12 space-y-6">
       <div className="space-y-1">
-        <h2 className="text-2xl font-bold tracking-tight text-foreground">Projetos</h2>
+        <h2 className="text-2xl font-bold tracking-tight text-foreground">Projetos & Cases</h2>
         <p className="text-sm text-text-secondary">
-          Aplicações, scripts de automação, consultas SQL e análises de dados desenvolvidas.
+          Aplicações web, ecossistemas analíticos e soluções de software em destaque.
         </p>
       </div>
 
@@ -43,9 +77,15 @@ export function ProjectsSection() {
         ))}
       </div>
 
-      {/* Renderização Condicional baseada na regra de quantidade */}
-      {previewProjects.length === 0 ? (
-        <UnderConstruction title="Nenhum projeto encontrado nesta categoria no momento. Estamos atualizando o portfólio!" />
+      {/* Carregamento / Vazio / Listagem */}
+      {loading ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {[1, 2].map((i) => (
+            <div key={i} className="h-52 rounded-lg bg-surface/30 animate-pulse border border-border/40" />
+          ))}
+        </div>
+      ) : previewProjects.length === 0 ? (
+        <UnderConstruction title="Nenhum projeto encontrado nesta categoria no momento. Novos repositórios estão sendo sincronizados!" />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Mapeamento dos Projetos Reais */}
@@ -55,13 +95,11 @@ export function ProjectsSection() {
                 <CardHeader className="space-y-2">
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-accent/10 text-accent border border-accent/20">
-                      {project.category}
+                      {project.language || "Projeto"}
                     </span>
-                    {project.highlight && (
-                      <span className="text-[10px] font-medium text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">
-                        Destaque
-                      </span>
-                    )}
+                    <span className="text-[10px] font-medium text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">
+                      Destaque
+                    </span>
                   </div>
                   
                   <Link href={`/projects/${project.id}`} className="block group">
@@ -70,7 +108,7 @@ export function ProjectsSection() {
                     </CardTitle>
                   </Link>
 
-                  <CardDescription className="text-xs text-text-secondary leading-relaxed">
+                  <CardDescription className="text-xs text-text-secondary leading-relaxed line-clamp-3">
                     {project.description}
                   </CardDescription>
                 </CardHeader>
@@ -78,7 +116,7 @@ export function ProjectsSection() {
 
               <CardContent className="space-y-4 pt-2">
                 <div className="flex flex-wrap gap-1.5">
-                  {project.tags.map((tag) => (
+                  {project.topics.slice(0, 5).map((tag) => (
                     <span
                       key={tag}
                       className="text-[11px] px-2 py-0.5 rounded bg-background border border-border/60 text-text-secondary"
@@ -97,9 +135,9 @@ export function ProjectsSection() {
                   </Link>
 
                   <div className="flex items-center gap-3">
-                    {project.githubUrl && (
+                    {project.repoUrl && (
                       <a
-                        href={project.githubUrl}
+                        href={project.repoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-text-secondary hover:text-accent transition-colors"
@@ -107,9 +145,9 @@ export function ProjectsSection() {
                         GitHub ↗
                       </a>
                     )}
-                    {project.deployUrl && (
+                    {project.liveUrl && (
                       <a
-                        href={project.deployUrl}
+                        href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-text-secondary hover:text-accent transition-colors"
@@ -123,8 +161,8 @@ export function ProjectsSection() {
             </Card>
           ))}
 
-          {/* Card Exclusivo de "Em Construção" quando houver exatamente 1 projeto filtrado */}
-          {previewProjects.length === 1 && (
+          {/* Card Complementar "Em Construção" (aparece enquanto não houver 4 projetos no grid) */}
+          {showPlaceholderCard && (
             <Card className="h-full flex flex-col justify-between border-dashed border-border/60 bg-surface/20 opacity-85 hover:opacity-100 transition-opacity">
               <CardHeader className="space-y-2">
                 <div className="flex items-center justify-between">
@@ -133,17 +171,17 @@ export function ProjectsSection() {
                   </span>
                 </div>
                 <CardTitle className="text-lg text-text-secondary">
-                  Novas Automações & Cases
+                  Novas Automações & Pipeline de Dados
                 </CardTitle>
                 <CardDescription className="text-xs text-text-secondary leading-relaxed">
-                  Trabalhos adicionais em engenharia de dados, consultas SQL e automações com Python estão sendo documentados para disponibilização.
+                  Trabalhos adicionais em engenharia de dados, consultas otimizadas em SQL e automações Python estão sendo documentados no GitHub com a tag portfolio.
                 </CardDescription>
               </CardHeader>
 
               <CardContent className="pt-2">
                 <div className="p-3 rounded-lg bg-background/50 border border-border/40 text-center">
                   <p className="text-xs text-text-secondary font-medium">
-                    ⚡ Próximo projeto em fase de estruturação
+                    ⚡ Próximo projeto em fase de estruturação e documentação
                   </p>
                 </div>
               </CardContent>

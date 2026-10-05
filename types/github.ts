@@ -1,4 +1,3 @@
-// Interface para o repositório retornado diretamente pela API REST do GitHub (v3)
 export interface GitHubRepository {
   id: number;
   name: string;
@@ -18,9 +17,8 @@ export interface GitHubRepository {
   pushed_at: string;
 }
 
-// Interface formatada para consumo direto nos cards de projetos da UI
 export interface FormattedProject {
-  id: number;
+  id: number | string;
   title: string;
   description: string;
   repoUrl: string;
