@@ -1,43 +1,60 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { contactSchema } from "@/lib/validations/contact";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, phone, message } = body;
 
-    // Validação básica dos campos obrigatórios
-    if (!name || !email || !message) {
+    // 1. Validação estrita via Zod
+    const validation = contactSchema.safeParse(body);
+
+    if (!validation.success) {
+      const fieldErrors = validation.error.flatten().fieldErrors;
+      const firstError = Object.values(fieldErrors)[0]?.[0] || "Dados do formulário inválidos.";
+
       return NextResponse.json(
-        { error: "Nome, e-mail e mensagem são obrigatórios." },
+        { error: firstError, details: fieldErrors },
         { status: 400 }
       );
     }
 
-    // Envio do e-mail via Resend
-    const data = await resend.emails.send({
-      from: "ASGC Devolp Contact <onboarding@resend.dev>", // Remetente de testes padrão do Resend
-      to: [process.env.CONTACT_RECIPIENT_EMAIL || "asgc.devolp@gmail.com"],
-      replyTo: email, // Ao clicar em "Responder", vai direto para o visitante
+    const { name, email, phone, message } = validation.data;
+
+    // 2. Envio do e-mail via Resend
+    const recipientEmail = process.env.CONTACT_RECIPIENT_EMAIL || "asgc.devolp@gmail.com";
+
+    const { data, error } = await resend.emails.send({
+      from: "ASGC Portfolio Contact <onboarding@resend.dev>",
+      to: [recipientEmail],
+      replyTo: email,
       subject: `[Contato - Portfólio] Mensagem de ${name}`,
       html: `
-        <h2>Nova mensagem recebida pelo Portfólio</h2>
+        <h2>Nova mensagem recebida via Portfólio</h2>
         <p><strong>Nome:</strong> ${name}</p>
         <p><strong>E-mail:</strong> ${email}</p>
         <p><strong>Telefone:</strong> ${phone || "Não informado"}</p>
         <hr />
         <p><strong>Mensagem:</strong></p>
-        <p style="white-space: pre-wrap;">${message}</p>
+        <p style="white-space: pre-wrap;">${message.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>
       `,
     });
 
-    return NextResponse.json({ success: true, data }, { status: 200 });
+    if (error) {
+      console.error("Erro retornado pelo SDK do Resend:", error);
+      return NextResponse.json(
+        { error: "Falha no serviço de e-mail. Tente novamente mais tarde." },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ success: true, id: data?.id }, { status: 200 });
   } catch (error) {
-    console.error("Erro ao enviar e-mail:", error);
+    console.error("Erro crítico na API de Contato:", error);
     return NextResponse.json(
-      { error: "Ocorreu um erro ao enviar a mensagem. Tente novamente." },
+      { error: "Erro interno do servidor. Tente novamente mais tarde." },
       { status: 500 }
     );
   }

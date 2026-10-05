@@ -8,6 +8,7 @@ import { Input } from "@/app/components/ui/Input";
 import { TextArea } from "@/app/components/ui/TextArea";
 import { Button } from "@/app/components/ui/Button";
 import { Icon, IconName } from "@/app/components/ui/Icon";
+import { contactSchema } from "@/lib/validations/contact";
 
 export function ContactSection() {
   const [loading, setLoading] = useState(false);
@@ -41,12 +42,22 @@ export function ContactSection() {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    const data = {
-      name: formData.get("name"),
-      phone: formData.get("phone"),
-      email: formData.get("email"),
-      message: formData.get("message"),
+    const rawData = {
+      name: formData.get("name") as string,
+      phone: formData.get("phone") as string,
+      email: formData.get("email") as string,
+      message: formData.get("message") as string,
     };
+
+    // Validação Lado do Cliente via Zod
+    const validation = contactSchema.safeParse(rawData);
+    if (!validation.success) {
+      const fieldErrors = validation.error.flatten().fieldErrors;
+      const firstError = Object.values(fieldErrors)[0]?.[0];
+      setErrorMessage(firstError || "Preencha os campos corretamente.");
+      setLoading(false);
+      return;
+    }
 
     try {
       const response = await fetch("/api/contact", {
@@ -54,7 +65,7 @@ export function ContactSection() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(validation.data),
       });
 
       const result = await response.json();
@@ -64,7 +75,7 @@ export function ContactSection() {
       }
 
       setSuccess(true);
-      form.reset(); // Limpa os campos do formulário após o envio
+      form.reset(); // Limpa os campos do formulário após o envio bem-sucedido
     } catch (err: any) {
       setErrorMessage(err.message || "Erro de conexão. Tente novamente mais tarde.");
     } finally {
@@ -74,7 +85,7 @@ export function ContactSection() {
 
   return (
     <section id="contato" className="pt-12 sm:pt-16 border-t border-border/60 space-y-8">
-      {/* Cabeçalho da Seção no Padrão do Design System */}
+      {/* Cabeçalho da Seção */}
       <div className="space-y-1">
         <h2 className="text-2xl font-bold tracking-tight text-foreground">Contato</h2>
         <p className="text-sm text-text-secondary">
@@ -148,7 +159,7 @@ export function ContactSection() {
                 </a>
               </div>
 
-              {/* Grade de Redes Profissionais (Simetria 2x2) */}
+              {/* Grade de Redes Profissionais */}
               <div className="pt-4 border-t border-border/50">
                 <p className="text-xs font-semibold text-text-secondary uppercase tracking-wider mb-3">Redes Profissionais</p>
                 <div className="grid grid-cols-2 gap-2">
@@ -229,4 +240,4 @@ export function ContactSection() {
       </div>
     </section>
   );
-}
+} 
