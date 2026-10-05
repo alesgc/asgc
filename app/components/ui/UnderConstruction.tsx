@@ -15,7 +15,6 @@ export function UnderConstruction({
 }: UnderConstructionProps) {
   // Define o texto dinâmico do botão com base no link de retorno
   const getButtonLabel = (href: string) => {
-    if (href === "/dev") return "Início DEV";
     if (href === "/projects") return "Lista de Projetos";
     return "Página Inicial";
   };
