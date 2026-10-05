@@ -1,33 +1,33 @@
 # Dependências
-/node_modules
-/.pnpm-store
+node_modules/
+.pnpm-store/
 
-# Compilação e Builds do Next.js
-/.next/
-/out/
-/build/
-/dist/
+# Compilação e Builds
+.next/
+out/
+build/
+dist/
 
-# Variáveis de Ambiente e Chaves Privadas (Nunca enviar ao Git)
+# Variáveis de Ambiente e Chaves Privadas
 .env
 .env*.local
 .env.production.local
 .env.development.local
 
-# Logs e Arquivos de Diagnóstico
+# Logs e Diagnostics
 *.log
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
 pnpm-debug.log*
 
-# Sistema Operacional e IDEs
+# SO e IDEs
 .DS_Store
+Thumbs.db
 *.pem
 .vscode/
 .idea/
 
-# Cache do TypeScript e Vercel
+# Cache
 *.tsbuildinfo
 next-env.d.ts
-/.vercel
+.vercel/
