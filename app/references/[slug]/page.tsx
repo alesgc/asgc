@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import Link from "next/link";
 import { references } from "@/app/config/references";
 import { UnderConstruction } from "@/app/components/ui/UnderConstruction";
