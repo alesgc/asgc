@@ -1,5 +1,7 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { references } from "@/app/config/references";
+import { siteConfig } from "@/app/config/site";
 import { UnderConstruction } from "@/app/components/ui/UnderConstruction";
 
 interface ReferenceDetailPageProps {
@@ -12,6 +14,42 @@ export function generateStaticParams() {
   return references.map((ref) => ({
     slug: ref.id,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: ReferenceDetailPageProps): Promise<Metadata> {
+  const resolvedParams = await params;
+  const reference = references.find((r) => r.id === resolvedParams.slug);
+
+  if (!reference) {
+    return {
+      title: "Referência não encontrada",
+      robots: { index: false, follow: false },
+    };
+  }
+
+  const canonicalBase = siteConfig.url.replace(/\/$/, "");
+  return {
+    title: `${reference.title} — ${reference.category}`,
+    description: `${reference.description} · ${siteConfig.author.name}`,
+    keywords: [reference.category, reference.title, "formação", "certificação", "aprendizado", ...siteConfig.keywords],
+    alternates: {
+      canonical: `/references/${reference.id}`,
+    },
+    openGraph: {
+      type: "article",
+      title: `${reference.title} — ${reference.category}`,
+      description: reference.description,
+      url: `${canonicalBase}/references/${reference.id}`,
+      tags: [reference.category],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${reference.title} — ${reference.category}`,
+      description: reference.description,
+    },
+  };
 }
 
 export default async function ReferenceDetailPage({ params }: ReferenceDetailPageProps) {
