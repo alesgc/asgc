@@ -1,7 +1,20 @@
-import { FormattedProject } from "@/types/github";
+import { FormattedProject, GitHubRepository } from "@/types/github";
 import { projects as fallbackProjects, ProjectItem } from "@/app/config/projects";
 
 const GITHUB_USERNAME = "alesgc";
+
+type GitHubSearchItem = Pick<
+  GitHubRepository,
+  | "name"
+  | "description"
+  | "html_url"
+  | "homepage"
+  | "stargazers_count"
+  | "forks_count"
+  | "language"
+  | "topics"
+  | "pushed_at"
+>;
 
 /**
  * Extrai seções marcadas com tags HTML <!-- PORTFOLIO:SECAO_START --> ... <!-- PORTFOLIO:SECAO_END --> no README
@@ -61,7 +74,7 @@ export async function getGitHubProjects(): Promise<FormattedProject[]> {
 
     // Processa os repositórios retornados e busca o README.md para extrair o resumo customizado
     const formattedProjects: FormattedProject[] = await Promise.all(
-      items.map(async (repo: any) => {
+      items.map(async (repo: GitHubSearchItem) => {
         let customSummary = "";
 
         try {
@@ -78,12 +91,11 @@ export async function getGitHubProjects(): Promise<FormattedProject[]> {
               "<!-- PORTFOLIO:SUMMARY_END -->"
             );
           }
-        } catch (e) {
+        } catch {
           // Utiliza fallback silencioso do README em caso de erro
         }
 
         const topics: string[] = repo.topics || [];
-        const isHighlight = topics.includes("highlight");
 
         return {
           id: repo.name,

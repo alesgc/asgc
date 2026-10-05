@@ -76,8 +76,8 @@ export function ContactSection() {
 
       setSuccess(true);
       form.reset(); // Limpa os campos do formulário após o envio bem-sucedido
-    } catch (err: any) {
-      setErrorMessage(err.message || "Erro de conexão. Tente novamente mais tarde.");
+    } catch (err: unknown) {
+      setErrorMessage(err instanceof Error ? err.message : "Erro de conexão. Tente novamente mais tarde.");
     } finally {
       setLoading(false);
     }
