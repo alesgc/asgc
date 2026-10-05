@@ -89,7 +89,7 @@ export function ContactSection() {
       <div className="space-y-1">
         <h2 className="text-2xl font-bold tracking-tight text-foreground">Contato</h2>
         <p className="text-sm text-text-secondary">
-          Vamos construir algo incrível juntos? Envie uma mensagem ou conecte-se através dos canais oficiais.
+          Interessado em uma oportunidade, parceria ou só quer trocar uma ideia sobre dados? Me chame via WhatsApp, LinkedIn ou envie uma mensagem abaixo.
         </p>
       </div>
 

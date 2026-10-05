@@ -6,7 +6,7 @@ import { projects } from "./projects";
 export const siteConfig = {
   name: "ASGC Devolp",
   description:
-    "Portfólio Alexandre S. G. Camargo: Analista de Dados e Engenheiro de Dados com projetos em Python, SQL, ETL, PostgreSQL e Power BI. Cases de pipeline de dados, automação BACEN/PTAX e dashboards analíticos.",
+    "Alexandre S. G. Camargo — Analista e Engenheiro de Dados. Trabalho com Python, SQL, pipelines ETL, modelagem PostgreSQL, Power BI e automação de coletas BACEN/PTAX para transformar dados brutos em decisão.",
   keywords: [
     "Analista de Dados",
     "Engenheiro de Dados",
@@ -42,7 +42,7 @@ export const siteConfig = {
     phone: "(11) 9 6902-7521",
   },
   objective:
-    "Portfólio de Alexandre S. G. Camargo — Analista de Dados, com formação complementar em Ciência de Dados (EBAC) e base sólida de Engenharia de Computação (UNIVESP). Especializado em Python, SQL, ETL, modelagem PostgreSQL e Power BI, com experiência prática na construção de ecossistemas analíticos e automações que reduzem tempo operacional e estruturam indicadores para tomada de decisão.",
+    "Sou Alexandre S. G. Camargo, Analista e Engenheiro de Dados. Estou cursando Ciência de Dados na EBAC e tenho 6 semestres de Engenharia de Computação pela UNIVESP (trancada). Hoje trabalho com Python, SQL, ETL, modelagem PostgreSQL e Power BI. Construí pipelines e dashboards que evitam trabalho manual repetitivo e deixam os indicadores do negócio claros para quem precisa decidir rápido.",
   links: {
     github: "https://github.com/alesgc",
     linkedin: "https://www.linkedin.com/in/techbouros/",

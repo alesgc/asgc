@@ -58,7 +58,7 @@ export function ProjectsSection() {
       <div className="space-y-1">
         <h2 className="text-2xl font-bold tracking-tight text-foreground">Projetos & Cases</h2>
         <p className="text-sm text-text-secondary">
-          Aplicações web, ecossistemas analíticos e soluções de software em destaque.
+          Do pipeline de ingestão ao dashboard final. Aqui estão os principais projetos que desenvolvi.
         </p>
       </div>
 
