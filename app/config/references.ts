@@ -32,11 +32,13 @@ export const references: ReferenceItem[] = [
   {
     id: "univesp",
     title: "UNIVESP - Universidade Virtual do Estado de SP",
-    description: "Graduação em Engenharia de Computação — Formação sólida em estruturas de dados, algoritmos, matemática aplicada e arquitetura de sistemas, alinhada à aplicação prática em pipelines de dados e modelagem relacional.",
+    description:
+      "Formação em Engenharia de Computação com foco em estrutura de dados, algoritmos, matemática aplicada e arquitetura de sistemas, alinhados à engenharia e análise de dados.",
     url: "https://univesp.br/",
     category: "Acadêmico",
     badgeText: "Acadêmico",
-    detailedContent: "Sólida base acadêmica em engenharia de sistemas, cálculo, estruturas de dados, algoritmos, redes e arquitetura de computadores construída ao longo de 6 semestres.",
+    detailedContent:
+      "Sólida base acadêmica em Engenharia de Computação: cálculo, estruturas de dados, algoritmos, redes e arquitetura de computadores construída ao longo de 6 semestres cursados, com ênfase em lógica, modelagem e disciplinas que fundamentais para engenharia de dados e desenvolvimento de sistemas.",
   },
   {
     id: "dsa",

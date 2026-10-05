@@ -16,7 +16,6 @@ export interface ProjectItem {
   githubUrl?: string;
   deployUrl?: string;
   highlight?: boolean;
-  docsSlug?: string;
   details: ArchitectureDetails;
 }
 
@@ -45,7 +44,6 @@ export const projects: ProjectItem[] = [
     ],
     githubUrl: "https://github.com/alesgc/pera",
     highlight: true,
-    docsSlug: "pera-finance-overview",
     details: {
       motivation:
         "Oferecer uma solução integrada para tratamento de dados financeiros complexos, automatizando a coleta de cotações PTAX do Banco Central e estruturando esquemas relacionais para suporte à decisão.",
@@ -80,7 +78,6 @@ export const projects: ProjectItem[] = [
     githubUrl: "https://github.com/alesgc/asgc",
     deployUrl: "https://asgc.vercel.app/",
     highlight: true,
-    docsSlug: "asgc-devolp-overview",
     details: {
       motivation:
         "Construir um ecossistema digital próprio e centralizado que substitua currículos estáticos em PDF por uma plataforma interativa, demonstrando capacidade prática em engenharia de software moderna, tipagem estrita e integração de serviços serverless.",

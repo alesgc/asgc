@@ -1,7 +1,5 @@
-"use client";
-
-import { use } from "react";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { projects } from "@/app/config/projects";
 import { UnderConstruction } from "@/app/components/ui/UnderConstruction";
 import { Icon } from "@/app/components/ui/Icon";
@@ -12,9 +10,56 @@ interface ProjectDetailPageProps {
   }>;
 }
 
-export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
-  // Desembrulha os parâmetros de rota dinâmicos do Next.js
-  const resolvedParams = use(params);
+export function generateStaticParams() {
+  return projects.map((p) => ({ slug: p.id }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const resolved = await params;
+  const project = projects.find((p) => p.id === resolved.slug);
+  if (!project) {
+    return {
+      title: "Projeto não encontrado",
+      description: "O projeto solicitado não está disponível.",
+      robots: { index: false, follow: false },
+    };
+  }
+
+  const baseTitle = `${project.title} — ${project.category}`;
+  const baseDescription =
+    project.details.impact && project.description.length < 160
+      ? `${project.description} ${project.details.impact}`
+      : project.description;
+  const tags = project.tags.join(", ");
+
+  return {
+    title: baseTitle,
+    description: baseDescription,
+    keywords: [project.category, ...project.tags, project.title, "Projeto de Dados", "ASGC Devolp"],
+    alternates: {
+      canonical: `/projects/${project.id}`,
+    },
+    openGraph: {
+      type: "article",
+      title: baseTitle,
+      description: baseDescription,
+      url: `/projects/${project.id}`,
+      tags,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: baseTitle,
+      description: baseDescription,
+    },
+  };
+}
+
+export default async function ProjectDetailPage({ params }: ProjectDetailPageProps) {
+  const resolvedParams = await params;
   
   // Busca o projeto pelo ID na base real
   const project = projects.find((p) => p.id === resolvedParams.slug);

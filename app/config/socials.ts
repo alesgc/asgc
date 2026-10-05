@@ -29,7 +29,7 @@ export const socials: SocialItem[] = [
   {
     id: "whatsapp",
     label: "WhatsApp",
-    href: "https://wa.me/5511969027531",
+    href: "https://wa.me/5511969027521",
     iconName: "whatsapp",
   },
 ];
