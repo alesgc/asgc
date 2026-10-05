@@ -32,7 +32,7 @@ export const references: ReferenceItem[] = [
   {
     id: "univesp",
     title: "UNIVESP - Universidade Virtual do Estado de SP",
-    description: "Graduação em Engenharia de Computação (6 semestres cursados) — Foco em fundamentos da computação, matemática e arquitetura de software.",
+    description: "Graduação em Engenharia de Computação — Formação sólida em estruturas de dados, algoritmos, matemática aplicada e arquitetura de sistemas, alinhada à aplicação prática em pipelines de dados e modelagem relacional.",
     url: "https://univesp.br/",
     category: "Acadêmico",
     badgeText: "Acadêmico",

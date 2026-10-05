@@ -101,7 +101,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
       {/* Seção Estruturada de Arquitetura & Engenharia */}
       <section className="space-y-6">
         <h2 className="text-xl font-bold tracking-tight text-foreground">
-          Documentação Téchnica & Decisões de Arquitetura
+          Documentação Técnica & Decisões de Arquitetura
         </h2>
 
         <div className="grid grid-cols-1 gap-6">

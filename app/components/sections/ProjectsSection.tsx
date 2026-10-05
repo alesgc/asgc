@@ -48,8 +48,10 @@ export function ProjectsSection() {
   const MAX_DISPLAY = 4;
   const previewProjects = filteredProjects.slice(0, MAX_DISPLAY);
 
-  // Exibe card "Em Construção" se a lista tiver menos projetos do que o limite do grid
-  const showPlaceholderCard = previewProjects.length > 0 && previewProjects.length < MAX_DISPLAY;
+  // Placeholder "Em Breve" desabilitado por auditoria de R&S em 2026-10-05.
+  // Regra de portfólio profissional: só exibir projetos finalizados. Reativar apenas quando houver no mínimo 4 projetos reais finalizados.
+  // Anterior: previewProjects.length > 0 && previewProjects.length < MAX_DISPLAY
+  const showPlaceholderCard = false;
 
   return (
     <section id="projetos" className="py-12 space-y-6">
