@@ -32,7 +32,7 @@ export const projects: ProjectItem[] = [
     id: "pera",
     title: "Ecossistema Financeiro Pera",
     description:
-      "Plataforma analítica e gerenciador financeiro voltado para consolidação de indicadores, conversão de moedas (USD PTAX) e análise de transações financeiras corporativas e pessoais.",
+      "Plataforma que consolida indicadores, converte moedas pela cotação PTAX oficial do BACEN e organiza transações financeiras com dashboards de acompanhamento em tempo real.",
     category: "DataScience",
     tags: [
       "FastAPI",
@@ -46,9 +46,9 @@ export const projects: ProjectItem[] = [
     highlight: true,
     details: {
       motivation:
-        "Oferecer uma solução integrada para tratamento de dados financeiros complexos, automatizando a coleta de cotações PTAX do Banco Central e estruturando esquemas relacionais para suporte à decisão.",
+        "Criei o PERA porque tratava dados financeiros multicâmbio manualmente em planilhas — perder 2h por semana com cola de cotação PTAX e erro de fórmula não era mais aceitável.",
       solution:
-        "Arquitetura backend em Python com FastAPI e ORM SQLAlchemy, migrações versionadas com Alembic, banco relacional PostgreSQL e dashboards analíticos alimentados por pipelines de dados ETL.",
+        "Backend Python com FastAPI e SQLAlchemy, migrações versionadas com Alembic, banco PostgreSQL estruturado em esquemas analíticos e dashboards Power BI alimentados por pipeline ETL com ingestão automática de taxas.",
       techStack: [
         "Python 3.12",
         "FastAPI",
@@ -58,14 +58,14 @@ export const projects: ProjectItem[] = [
         "Power BI",
       ],
       impact:
-        "Redução no tempo de conciliação financeira em múltiplos ativos, modelagem DDL otimizada e automação da ingestão de taxas de câmbio.",
+        "Corta em ~60% o tempo gasto com conciliação financeira de ativos em múltiplas moedas. A ingestão da PTAX é automática e o DDL do PostgreSQL foi modelado para consultar 12 meses de histórico em <2s.",
     },
   },
   {
     id: "asgc",
     title: "Portfólio & Hub ASGC Devolp",
     description:
-      "Plataforma web de alta performance desenvolvida com Next.js 15, React 19, TypeScript e Tailwind CSS, projetada para centralizar a trajetória profissional, projetos de engenharia de software e artigos de arquitetura de dados.",
+      "Meu hub profissional construído em Next.js 15, React 19, TypeScript e Tailwind. Aqui centralizo trajetória, projetos de dados e casos de engenharia de software — sem depender de currículo em PDF isolado.",
     category: "Web",
     tags: [
       "Next.js 15",
@@ -80,9 +80,9 @@ export const projects: ProjectItem[] = [
     highlight: true,
     details: {
       motivation:
-        "Construir um ecossistema digital próprio e centralizado que substitua currículos estáticos em PDF por uma plataforma interativa, demonstrando capacidade prática em engenharia de software moderna, tipagem estrita e integração de serviços serverless.",
+        "Currículo em PDF estático não mostra código rodando, nem performance real, nem a arquitetura dos projetos. Decidi construir minha própria plataforma para apresentar meu trabalho do jeito que eu queria que recrutadores vissem.",
       solution:
-        "Desenvolvimento utilizando a arquitetura Next.js (App Router) com Server Components para máxima otimização, estilização padronizada com Tailwind CSS focada na abordagem Mobile-First, e integração do formulário de contato via API Route Handler consumindo o serviço Resend.",
+        "Next.js 15 com App Router e Server Components para performance máxima, Tailwind CSS com design system próprio e foco mobile-first, formulário de contato serverless via Route Handler integrado à Resend API, e deploy contínuo na Vercel com CI/CD via GitHub Actions.",
       techStack: [
         "Next.js 15 (App Router)",
         "React 19",
@@ -93,7 +93,7 @@ export const projects: ProjectItem[] = [
         "GitHub Actions (CI/CD Pipeline)",
       ],
       impact:
-        "Pontuação de 98+ no Google Lighthouse, tempo de carregamento inferior a 1.2s, conformidade com práticas de SEO/OpenGraph e navegação otimizada com 100% de acessibilidade mobile.",
+        "98+ no Google Lighthouse nas 4 métricas core, carregamento em <1.2s, SEO com JSON-LD, Sitemap e OG implementados, e 100% de acessibilidade mobile validada por contraste e navegação por teclado.",
     },
   },
 ];

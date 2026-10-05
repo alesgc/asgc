@@ -22,10 +22,10 @@ export function SkillsSection() {
     <section id="competencias" className="py-8 space-y-4">
       <div className="space-y-1">
         <h2 className="text-xl font-bold tracking-tight text-foreground">
-          Competências & Stack Analítica
+          Stack que uso no dia a dia
         </h2>
         <p className="text-xs text-text-secondary">
-          Principais tecnologias e ferramentas aplicadas no tratamento e análise de dados.
+          Ferramentas organizadas por área — da modelagem PostgreSQL até o dashboard final no Power BI.
         </p>
       </div>
 

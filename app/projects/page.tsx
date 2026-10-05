@@ -5,7 +5,7 @@ import { UnderConstruction } from "@/app/components/ui/UnderConstruction";
 
 export const metadata = {
   title: "Projetos | ASGC Devolp",
-  description: "Lista completa de aplicações, scripts e análises de dados desenvolvidas.",
+  description: "Todos os meus projetos organizados por categoria: desde pipelines ETL com Python/SQL até aplicações web em Next.js e dashboards de Power BI.",
 };
 
 interface AllProjectsPageProps {
@@ -23,7 +23,7 @@ export default function AllProjectsPage({ projects = realProjects }: AllProjects
         <div className="space-y-1">
           <h1 className="text-3xl font-bold tracking-tight text-foreground">Todos os Projetos</h1>
           <p className="text-sm text-text-secondary">
-            Repositório completo de automações, códigos, bancos de dados estruturados e aplicações web.
+            Engenharia de dados, dashboards, automações e aplicações web. Tudo em um só lugar, com código no GitHub e documentação.
           </p>
         </div>
       </div>

@@ -4,8 +4,8 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/app
 import { UnderConstruction } from "@/app/components/ui/UnderConstruction";
 
 export const metadata = {
-  title: "Referências | ASGC Devolp",
-  description: "Lista completa de canais, plataformas e instituições de ensino fundamentais.",
+  title: "Formação & Referências | ASGC Devolp",
+  description: "Minha trajetória completa: graduação, cursos profissionalizantes e os canais/plataformas que acompanho para evoluir em dados e tecnologia.",
 };
 
 export default function AllReferencesPage() {
@@ -16,9 +16,9 @@ export default function AllReferencesPage() {
           &larr; Voltar para a Página Inicial
         </Link>
         <div className="space-y-1">
-          <h1 className="text-3xl font-bold tracking-tight text-foreground">Todas as Referências</h1>
+          <h1 className="text-3xl font-bold tracking-tight text-foreground">Formação & Referências</h1>
           <p className="text-sm text-text-secondary">
-            Repositório completo de fontes de estudo, canais e instituições que dão suporte à minha jornada técnica.
+            Da graduação aos canais do YouTube que me acompanham desde o começo. Aqui está tudo o que fundamenta minha formação em dados e engenharia de software.
           </p>
         </div>
       </div>

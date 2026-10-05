@@ -28,7 +28,7 @@ export function HeroSection() {
         </div>
 
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-          Transformando dados em decisão: pipelines ETL, modelagem PostgreSQL e dashboards de negócio
+          Pipelines ETL, modelagem PostgreSQL e dashboards de Power BI que tiram dados da planilha e viram decisão
         </h1>
 
         <p className="text-base sm:text-lg text-text-secondary leading-relaxed max-w-3xl">

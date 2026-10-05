@@ -20,10 +20,10 @@ export function ReferencesSection() {
     <section id="referencias" className="py-12 space-y-6">
       <div className="space-y-1">
         <h2 className="text-2xl font-bold tracking-tight text-foreground">
-          Referências e Fontes de Aprendizado
+          Formação & Referências
         </h2>
         <p className="text-sm text-text-secondary">
-          Canais, plataformas e criadores que fundamentam minha formação técnica e contínua evolução.
+          Minha trajetória acadêmica, cursos e os canais e plataformas que acompanho para ficar atualizado em dados e tecnologia.
         </p>
       </div>
 
