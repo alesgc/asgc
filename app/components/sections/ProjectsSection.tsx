@@ -86,7 +86,7 @@ export function ProjectsSection() {
               className={`group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                 selectedCategory === category
                   ? "bg-accent text-white shadow-sm shadow-accent/20"
-                  : "bg-surface/50 border border-border text-text-secondary hover:text-foreground hover:border-accent/40 hover:bg-accent/[0.03]"
+                  : "bg-surface/50 border border-border text-text-secondary hover:text-foreground hover:border-accent/40 hover:bg-accent/3"
               }`}
             >
               <span>{category}</span>

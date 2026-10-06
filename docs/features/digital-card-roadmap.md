@@ -1,4 +1,24 @@
+---
+version: "1.1.0"
+status: "🟡 Roadmap Futuro Tier 3 — Não implantado na versão v1.1.0"
+date_last_updated: 2026-10-05
+responsible: Alexandre S. G. Camargo (ASGC)
+tags: [digital-card, roadmap, flippable-card, qrcode, vcard, wallet, mobile]
+related:
+  - docs/architecture/01-overview.md
+  - .trae/documents/contact_rh_ux_alinhamento_plan.md
+  - .trae/specs/atualizacao-documentos-v1.1.0/spec.md
+---
+
 # 📄 Roadmap & Documentação Técnica: Cartão de Visitas Digital (Flippable Card)
+
+> **Status de Implementação v1.1.0:** 🟡 **Roadmap Futuro Tier 3 — Não implantado**
+>
+> A especificação abaixo foi 100% planejada, mas nenhum componente de interface ou rota de API foi implementado na versão 1.1.0. O Cartão Digital é um diferencial futuro de UX mobile e brand pessoal.
+>
+> **Pré-requisitos para implantar em release futura (provavelmente v1.2.0+):**
+> 1. Fechar roadmap de 3 novos projetos de dados + CV ATS-friendly (prioridade maior);
+> 2. Validar demanda por QR Code em eventos / encontros presenciais de networking.
 
 ## 1. Visão Geral
 Este documento detalha a arquitetura, estratégia e planejamento para a implementação futura do **Cartão de Visitas Digital Interativo (Flippable Card)** no ecossistema **ASGC Devolp**.
@@ -66,3 +86,13 @@ asgc/
 └── docs/
     └── features/
         └── digital-card-roadmap.md   # Este documento de especificações
+```
+
+---
+
+## 5. Histórico de Versões
+
+| Data       | Versão | Responsável                     | Alterações |
+|------------|--------|---------------------------------|---|
+| 2026-10-05 | v1.1.0 | Alexandre S. G. Camargo (ASGC)  | Adiciona frontmatter oficial; bloco **Status de Implementação v1.1.0** (Roadmap Futuro Tier 3, não implantado); pré-requisitos para implantar em release futura; links docs complementares. |
+| 2026-10-05 | v1.0.0 | Alexandre S. G. Camargo (ASGC)  | Baseline do roadmap: seções Visão Geral, Arquitetura Híbrida HTML+SVG, Funcionalidades Complementares (VCF, QR, Wallets), Estrutura de Arquivos Futura. |
