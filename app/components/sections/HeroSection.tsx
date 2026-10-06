@@ -38,10 +38,11 @@ export function HeroSection() {
         <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
           <Link
             href="#projetos"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-accent text-white text-sm font-semibold hover:opacity-90 transition-opacity shadow-sm"
+            aria-label="Pular para a seção de projetos de dados"
+            className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-accent text-white text-sm font-semibold hover:bg-accent/95 transition-all shadow-sm shadow-accent/20 hover:translate-y-0.5"
           >
             Ver Projetos de Dados
-            <span aria-hidden="true">&rarr;</span>
+            <span aria-hidden="true" className="translate-x-0 transition-transform group-hover:translate-x-0.5">&rarr;</span>
           </Link>
 
           <a
@@ -49,10 +50,11 @@ export function HeroSection() {
             download="Alexandre_S_G_Camargo_CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-background border border-border text-foreground hover:border-accent/50 hover:text-accent text-sm font-medium transition-colors"
+            aria-label="Baixar currículo PDF de Alexandre S. G. Camargo"
+            className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-surface border border-border text-foreground hover:border-accent/50 hover:text-accent hover:bg-accent/[0.04] text-sm font-medium transition-all"
           >
             Baixar Currículo (PDF)
-            <span aria-hidden="true">&darr;</span>
+            <span aria-hidden="true" className="translate-y-0 transition-transform group-hover:-translate-y-0.5">&darr;</span>
           </a>
         </div>
       </div>

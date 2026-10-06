@@ -87,9 +87,10 @@ export function ContactSection() {
     <section id="contato" className="pt-12 sm:pt-16 border-t border-border/60 space-y-8">
       {/* Cabeçalho da Seção */}
       <div className="space-y-1">
-        <h2 className="text-2xl font-bold tracking-tight text-foreground">Contato</h2>
+        <h2 className="text-2xl font-bold tracking-tight text-foreground">
+          Contato</h2>
         <p className="text-sm text-text-secondary">
-          Interessado em uma oportunidade, parceria ou só quer trocar uma ideia sobre dados? Me chame via WhatsApp, LinkedIn ou envie uma mensagem abaixo.
+          Vagas, parcerias ou troca de ideia sobre dados? Fale comigo por WhatsApp, LinkedIn ou use o formulário abaixo. Respondo rapidamente.
         </p>
       </div>
 

@@ -28,20 +28,40 @@ export function ReferencesSection() {
       </div>
 
       {/* Filtros por Categoria (Abas) */}
-      <div className="flex flex-wrap gap-2 pb-2">
-        {referenceCategories.map((category) => (
-          <button
-            key={category}
-            onClick={() => setSelectedCategory(category)}
-            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
-              selectedCategory === category
-                ? "bg-accent text-white shadow-sm"
-                : "bg-surface border border-border text-text-secondary hover:text-foreground hover:border-accent/40"
-            }`}
-          >
-            {category}
-          </button>
-        ))}
+      <div className="flex flex-wrap gap-2 pb-2" role="tablist" aria-label="Filtrar formação e referências por categoria">
+        {referenceCategories.map((category) => {
+          const categoryCount =
+            category === "Todos"
+              ? references.length
+              : references.filter((item) => item.category === category).length;
+
+          return (
+            <button
+              key={category}
+              role="tab"
+              aria-selected={selectedCategory === category}
+              aria-controls={`referencias-lista-${category.toLowerCase()}`}
+              onClick={() => setSelectedCategory(category)}
+              className={`group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                selectedCategory === category
+                  ? "bg-accent text-white shadow-sm shadow-accent/20"
+                  : "bg-surface/50 border border-border text-text-secondary hover:text-foreground hover:border-accent/40 hover:bg-accent/[0.03]"
+              }`}
+            >
+              <span>{category}</span>
+              <span
+                aria-hidden="true"
+                className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full transition-colors ${
+                  selectedCategory === category
+                    ? "bg-white/15 text-white"
+                    : "bg-foreground/5 text-text-secondary group-hover:bg-accent/10 group-hover:text-accent"
+                }`}
+              >
+                {categoryCount}
+              </span>
+            </button>
+          );
+        })}
       </div>
 
       {/* Grid de Cards Minimalistas e Compactos */}
