@@ -51,7 +51,7 @@ export function HeroSection() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Baixar currículo PDF de Alexandre S. G. Camargo"
-            className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-surface border border-border text-foreground hover:border-accent/50 hover:text-accent hover:bg-accent/[0.04] text-sm font-medium transition-all"
+            className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-surface border border-border text-foreground hover:border-accent/50 hover:text-accent hover:bg-accent/4 text-sm font-medium transition-all"
           >
             Baixar Currículo (PDF)
             <span aria-hidden="true" className="translate-y-0 transition-transform group-hover:-translate-y-0.5">&darr;</span>

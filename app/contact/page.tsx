@@ -50,7 +50,7 @@ export default function ContactPage() {
 
       <ContactSection />
 
-      <div className="rounded-2xl border border-accent/20 bg-accent/[0.04] p-6 space-y-4">
+      <div className="rounded-2xl border border-accent/20 bg-accent/4 p-6 space-y-4">
         <div className="flex items-start gap-4">
           <div className="p-2.5 rounded-xl bg-accent/10 text-accent shrink-0">
             <svg
