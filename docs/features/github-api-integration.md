@@ -1,3 +1,26 @@
+---
+version: "1.1.0"
+status: "🟡 Planejado Backlog Tier 3 — Não implantado na versão v1.1.0"
+date_last_updated: 2026-10-05
+responsible: Alexandre S. G. Camargo (ASGC)
+tags: [github-api, integration, roadmap, topics, portfolio-sync]
+related:
+  - docs/features/checklist_pre_api.md (Fase 3 e 4)
+  - docs/architecture/01-overview.md
+  - .trae/specs/atualizacao-documentos-v1.1.0/spec.md
+---
+
+# 📄 Arquitetura & Especificação: Integração com API do GitHub e Sync de Documentação
+
+> **Status de Implementação v1.1.0:** 🟡 **Backlog Tier 3 (Não implantado)**
+>
+> A especificação abaixo foi 100% planejada e os *pre-requisitos básicos* já estão entregues:
+> - ✅ `.env.example` documenta `GITHUB_TOKEN` com fine-grained scope;
+> - ✅ Tipo `GitHubSearchItem` em `types/` baseline já validado por lint e TSC;
+> - ✅ `lib/github/` possui estrutura base e fallback hardcoded `app/config/projects.ts` 100% sincronizado com READMEs (tags `PORTFOLIO:SUMMARY_START/END`, `MOTIVATION`, `SOLUTION`, `IMPACT`).
+>
+> O **data fetching 100% dinâmico** via API REST GitHub com `next.revalidate = 3600` e cache estratégico **não foi implantado na versão 1.1.0**, ficando como roadmap Tier P3 para uma próxima release (provavelmente v1.2.0 ou v2.0.0, após 3 novos projetos de dados e CV ATS-friendly).
+
 **`docs/features/github-api-integration.md`**
 
 ---
@@ -179,3 +202,12 @@ export function parseGitHubRepoToProject(repo: any, readme: string): ProjectItem
 git commit -m "docs(features): create specification for GitHub API integration and README sync system"
 
 ```
+
+---
+
+## 7. Histórico de Versões
+
+| Data       | Versão | Responsável                     | Alterações |
+|------------|--------|---------------------------------|---|
+| 2026-10-05 | v1.1.0 | Alexandre S. G. Camargo (ASGC)  | Adiciona frontmatter oficial, bloco **Status de Implementação v1.1.0** (Backlog Tier 3, não implantado), lista de 3 pré-requisitos básicos já entregues, e links docs complementares. Atualiza status "Fase 4" para roadmap Tier P3 (não v1.1.0). |
+| 2026-10-05 | v1.0.0 | Alexandre S. G. Camargo (ASGC)  | Baseline da especificação: estrutura 6 seções, mapeamento topics, padrão README tags `PORTFOLIO:*`, parser e cache, próximos passos. |

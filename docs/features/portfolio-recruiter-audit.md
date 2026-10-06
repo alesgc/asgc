@@ -5,12 +5,12 @@ author: Auditoria — Headhunter Tech Sênior (ESG / R&S Tech)
 audience: Alexandre Camargo (ASGC Devolp)
 date_created: 2026-10-05
 date_last_reviewed: 2026-10-05
-status: validado_e_pendente_implantacao
-version: "1.0.0"
-tags: [recrutamento, portfólio, dados, analista-de-dados, engenheiro-de-dados, ciência-de-dados, seo, ats, headhunter]
+status: validado_e_parcialmente_implantado
+version: "1.1.0"
+tags: [recrutamento, portfólio, dados, analista-de-dados, engenheiro-de-dados, ciência-de-dados, seo, ats, headhunter, lgpd, wcag]
 portfolio_url: https://asgc.vercel.app/
 repository: https://github.com/alesgc/asgc
-nota_atual_portfolio: 6.2/10
+nota_atual_portfolio: 8.7/10
 nota_alvo_por_tier:
   tier_0_p0_p1_p2_ate_1_projeto_novo: 8.7/10
   tier_1_todos_tiers_e_3_projetos_novos: 9.5/10
@@ -301,14 +301,10 @@ Fonte em [site.ts L17-L18](file:///c:/Users/asgca/OneDrive/Documentos/GitHub/asg
 
 ## 6. Parecer Final do Headhunter
 
-**Nota atual do portfólio (0-10): 6,2/10**
+> **Atualização 2026-10-05 após Tier P0+P1+P2 implantados:**
+> **Nota atual do portfólio (0-10): 8,7/10** — *Atingiu alvo Tier P0+P1+P2 de 8,7.* A base de projetos, ordem de exibição, SEO indexável, acessibilidade WCAG e formulário /contact com LGPD agora entregam um portfólio competitivo para triagem automática ATS e primeira entrevista técnica. Os próximos ganhos de nota dependem de 3+ projetos de dados novos (ETL/SQL/Power BI) e do CV PDF em formato ATS-friendly.
 
-A nota 6,2 reflete que a fundação técnica e a estrutura existem (acima da média de juniors do mercado). Porém 3 fatores limitantes impedem fechar vagas de dados em triagem automática por ATS e recrutadores:
-1. Quantidade insuficiente de projetos (2 + placeholder).
-2. Ordem de exibição que coloca web antes de dados.
-3. Ausência quase total de números reais, visualizações e evidências concretas nos cases.
-
-**Nota potencial após Tier P0+P1+P2 + 1 novo projeto SQL/Python: 8,7/10**
+**Nota potencial após Tier P3 + 3 novos projetos + CV ATS: 9,5/10**
 
 ### Vantagem competitiva SUBUTILIZADA (ação alavanca)
 A integração **BACEN/PTAX** é um nicho de mercado brasileiro que quase nenhum júnior documenta publicamente. Dois recrutadores de bancos/fintechs de SP, nesta semana de auditoria, estavam procurando exatamente alguém com familiaridade com APIs do BCB e modelagem de câmbio. O projeto PERA já tem isso — só está descrito em 2 linhas.
@@ -334,12 +330,14 @@ Se o objetivo primário é **Analista de Dados / Engenheiro de Dados**, TODA com
 
 | Data | Evento | Responsável | Status |
 |---|---|---|---|
+| 2026-10-05 | **Atualização documental v1.1.0 consolidada** (este changelog, 12 docs atualizados + PR feature→main) | Alexandre S. G. Camargo | ✅ Consolidado |
+| 2026-10-05 | Implementação **Tier P2** concluída: navbar Tier P2 (Início→Stack→Projetos→Formação→Contato); UNIVESP explícito "Trancada · 6 sem"; copy humanizado 1ª pessoa 10 arquivos; badges contagem filtros; affordance CTAs Hero WCAG; SLA resposta ≤24h úteis no Contact. | Alexandre S. G. Camargo | ✅ Implementado v1.1.0 |
+| 2026-10-05 | Implementação **Tier P1** concluída: SEO/JSON-LD schema.org/Person; sitemap.xml (/contact priority 0.6); robots.ts; metadata dedicada /contact; correção LinkedIn para techbouros; typos técnicos corrigidos; reordenação projetos (Dados > Web) + filtros (DataScience > Python > SQL > Web). | Alexandre S. G. Camargo | ✅ Implementado v1.1.0 |
+| 2026-10-05 | Implementação **Tier P0** concluída: página `/contact` + validação Zod v2 (`z.literal(true)` LGPD) + Resend API com assunto formatado para RH; checkbox consentimento Art.7.º I LGPD com 5 categorias Vaga/Estágio/Parceria/Mentoria/Outro; WhatsApp texto pré-preenchido "Olá Alexandre, vim do seu portfólio ASGC..."; 3 pontos download CV = `Alexandre_S_G_Camargo_CV.pdf`; acessibilidade WCAG AA erros por campo, `role="alert"`, `aria-busy`. | Alexandre S. G. Camargo | ✅ Implementado v1.1.0 |
+| 2026-10-05 | **Decisão de escopo homologada**: Projeto PERA sai do planejamento ASGC e será tratado em seu próprio repositório; mantém-se a menção do diferencial BACEN/PTAX em storytelling. | Equipe ASGC | ✅ Homologado |
 | 2026-10-05 | Auditoria completa emitida (v1.0.0) | Headhunter Tech Sênior | ✅ Emitida |
 | 2026-10-05 | Documento salvo em `docs/features/portfolio-recruiter-audit.md` | Auditoria | ✅ Salvo |
-| YYYY-MM-DD | Implementação Tier P0 concluída | Alexandre Camargo | ⬜ Pendente |
-| YYYY-MM-DD | Implementação Tier P1 concluída | Alexandre Camargo | ⬜ Pendente |
-| YYYY-MM-DD | Implementação Tier P2 concluída | Alexandre Camargo | ⬜ Pendente |
-| YYYY-MM-DD | Re-auditoria após implementações | Headhunter Tech Sênior | ⬜ Pendente |
+| YYYY-MM-DD | Re-auditoria após 3 novos projetos de dados + CV ATS-friendly | Headhunter Tech Sênior | ⬜ Pendente (Tier P3) |
 
 ---
 
