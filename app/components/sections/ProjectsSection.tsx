@@ -63,20 +63,46 @@ export function ProjectsSection() {
       </div>
 
       {/* Filtros por Categoria (Abas) */}
-      <div className="flex flex-wrap gap-2 pb-2">
-        {projectCategories.map((category) => (
-          <button
-            key={category}
-            onClick={() => setSelectedCategory(category)}
-            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
-              selectedCategory === category
-                ? "bg-accent text-white shadow-sm"
-                : "bg-surface border border-border text-text-secondary hover:text-foreground hover:border-accent/40"
-            }`}
-          >
-            {category}
-          </button>
-        ))}
+      <div className="flex flex-wrap gap-2 pb-2" role="tablist" aria-label="Filtrar projetos por categoria">
+        {projectCategories.map((category) => {
+          const categoryCount = projectList.filter((project) => {
+            if (category === "Todos") return true;
+            const lang = project.language?.toLowerCase() || "";
+            const topics = project.topics.map((t) => t.toLowerCase());
+            if (category === "SQL") return lang.includes("sql") || topics.includes("sql");
+            if (category === "Python") return lang.includes("python") || topics.includes("python");
+            if (category === "Web") return lang.includes("typescript") || lang.includes("javascript") || topics.includes("web") || topics.includes("nextjs");
+            if (category === "DataScience") return topics.includes("datascience") || topics.includes("data-analysis") || lang.includes("jupyter") || project.id === "pera";
+            return true;
+          }).length;
+
+          return (
+            <button
+              key={category}
+              role="tab"
+              aria-selected={selectedCategory === category}
+              aria-controls={`projetos-lista-${category.toLowerCase()}`}
+              onClick={() => setSelectedCategory(category)}
+              className={`group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                selectedCategory === category
+                  ? "bg-accent text-white shadow-sm shadow-accent/20"
+                  : "bg-surface/50 border border-border text-text-secondary hover:text-foreground hover:border-accent/40 hover:bg-accent/[0.03]"
+              }`}
+            >
+              <span>{category}</span>
+              <span
+                aria-hidden="true"
+                className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full transition-colors ${
+                  selectedCategory === category
+                    ? "bg-white/15 text-white"
+                    : "bg-foreground/5 text-text-secondary group-hover:bg-accent/10 group-hover:text-accent"
+                }`}
+              >
+                {categoryCount}
+              </span>
+            </button>
+          );
+        })}
       </div>
 
       {/* Carregamento / Vazio / Listagem */}
