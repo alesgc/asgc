@@ -16,7 +16,7 @@ export function Footer() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                download={isCV ? "Alexandre_Camargo_CV.pdf" : undefined}
+                download={isCV ? "Alexandre_S_G_Camargo_CV.pdf" : undefined}
                 title={link.label}
                 aria-label={link.label}
                 className="flex items-center gap-2 p-1.5 text-foreground hover:text-accent transition-colors duration-200 group"
