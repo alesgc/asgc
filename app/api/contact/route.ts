@@ -21,24 +21,21 @@ export async function POST(request: Request) {
       );
     }
 
-    const { name, email, phone, message, subject, consent } = validation.data;
+    const { name, email, phone, message } = validation.data;
 
+    // 2. Envio do e-mail via Resend
     const recipientEmail = process.env.CONTACT_RECIPIENT_EMAIL || "asgc.devolp@gmail.com";
-
-    const emailSubject = `[${subject}] ${name} — Portfólio ASGC`;
 
     const { data, error } = await resend.emails.send({
       from: "ASGC Portfolio Contact <onboarding@resend.dev>",
       to: [recipientEmail],
       replyTo: email,
-      subject: emailSubject,
+      subject: `[Contato - Portfólio] Mensagem de ${name}`,
       html: `
         <h2>Nova mensagem recebida via Portfólio</h2>
         <p><strong>Nome:</strong> ${name}</p>
         <p><strong>E-mail:</strong> ${email}</p>
         <p><strong>Telefone:</strong> ${phone || "Não informado"}</p>
-        <p><strong>Finalidade / Assunto:</strong> ${subject.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>
-        <p><strong>Consentimento LGPD:</strong> ✅ Sim (explícito via formulário — ${consent ? "marcado" : "não marcado"})</p>
         <hr />
         <p><strong>Mensagem:</strong></p>
         <p style="white-space: pre-wrap;">${message.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>
